@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://chqpowjcrasup"]
+
+[ext_resource type="Texture2D" uid="uid://bk3d17n3jasyk" path="res://bg.png" id="1_eyhv4"]
+[ext_resource type="Texture2D" uid="uid://b5bcy4j4y41k" path="res://circle.png" id="2_euwd0"]
+[ext_resource type="Script" path="res://game/pivot.gd" id="3_jt8c4"]
+[ext_resource type="PackedScene" uid="uid://c0t7aq4qwubth" path="res://player/player.tscn" id="3_m21uj"]
+
+[node name="game" type="Node2D"]
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(574.5, 325)
+scale = Vector2(1.13511, 1.03107)
+texture = ExtResource("1_eyhv4")
+metadata/_edit_lock_ = true
+
+[node name="Circle" type="Sprite2D" parent="."]
+position = Vector2(576, 313)
+texture = ExtResource("2_euwd0")
+
+[node name="pivot" type="Marker2D" parent="."]
+position = Vector2(576, 313)
+script = ExtResource("3_jt8c4")
+
+[node name="player" parent="pivot" instance=ExtResource("3_m21uj")]
+position = Vector2(-262, 1)
