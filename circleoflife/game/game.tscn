@@ -10,6 +10,7 @@
 script = ExtResource("1_6vd4f")
 
 [node name="bg" type="Sprite2D" parent="."]
+z_index = -1000
 position = Vector2(574.5, 325)
 scale = Vector2(1.13511, 1.03107)
 texture = ExtResource("1_eyhv4")
@@ -30,4 +31,9 @@ position = Vector2(-262, 1)
 wait_time = 5.0
 autostart = true
 
+[node name="bulletTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="timeout" from="basicEnemyTimer" to="." method="_on_basic_enemy_timer_timeout"]
+[connection signal="timeout" from="bulletTimer" to="." method="_on_bullet_timer_timeout"]
