@@ -43,6 +43,12 @@ autostart = true
 wait_time = 0.1
 one_shot = true
 
+[node name="followerTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
 [connection signal="area_entered" from="spikepivot/spike" to="spikepivot" method="_on_spike_area_entered"]
 [connection signal="timeout" from="basicEnemyTimer" to="." method="_on_basic_enemy_timer_timeout"]
 [connection signal="timeout" from="bulletTimer" to="." method="_on_bullet_timer_timeout"]
+[connection signal="timeout" from="followerTimer" to="." method="_on_follower_timer_timeout"]
