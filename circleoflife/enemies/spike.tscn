@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://8pum6lgo0r7m"]
+
+[ext_resource type="Texture2D" uid="uid://c3vvqrbetl7j8" path="res://spike.png" id="1_o5ida"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56ef4"]
+radius = 41.4367
+
+[node name="spike" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o5ida")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_56ef4")

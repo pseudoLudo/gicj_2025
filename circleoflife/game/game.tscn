@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://chqpowjcrasup"]
+[gd_scene load_steps=8 format=3 uid="uid://chqpowjcrasup"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_6vd4f"]
 [ext_resource type="Texture2D" uid="uid://bk3d17n3jasyk" path="res://bg.png" id="1_eyhv4"]
 [ext_resource type="Texture2D" uid="uid://b5bcy4j4y41k" path="res://circle.png" id="2_euwd0"]
 [ext_resource type="Script" path="res://game/pivot.gd" id="3_jt8c4"]
 [ext_resource type="PackedScene" uid="uid://c0t7aq4qwubth" path="res://player/player.tscn" id="3_m21uj"]
+[ext_resource type="PackedScene" uid="uid://8pum6lgo0r7m" path="res://enemies/spike.tscn" id="6_l3361"]
+[ext_resource type="Script" path="res://enemies/spikepivot.gd" id="6_loadv"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_6vd4f")
@@ -27,6 +29,13 @@ script = ExtResource("3_jt8c4")
 [node name="player" parent="pivot" instance=ExtResource("3_m21uj")]
 position = Vector2(-262, 1)
 
+[node name="spikepivot" type="Marker2D" parent="."]
+position = Vector2(576, 313)
+script = ExtResource("6_loadv")
+
+[node name="spike" parent="spikepivot" instance=ExtResource("6_l3361")]
+position = Vector2(260, 0)
+
 [node name="basicEnemyTimer" type="Timer" parent="."]
 autostart = true
 
@@ -34,5 +43,6 @@ autostart = true
 wait_time = 0.1
 one_shot = true
 
+[connection signal="area_entered" from="spikepivot/spike" to="spikepivot" method="_on_spike_area_entered"]
 [connection signal="timeout" from="basicEnemyTimer" to="." method="_on_basic_enemy_timer_timeout"]
 [connection signal="timeout" from="bulletTimer" to="." method="_on_bullet_timer_timeout"]
