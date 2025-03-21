@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bykid6orlwq0t"]
+
+[ext_resource type="Texture2D" uid="uid://dvcyt78iddpkw" path="res://basicenem.png" id="1_oc4jp"]
+[ext_resource type="Script" path="res://enemies/basic_enemy.gd" id="1_p8owp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wd634"]
+radius = 44.9222
+
+[node name="basicEnemy" type="Area2D"]
+script = ExtResource("1_p8owp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_oc4jp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wd634")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
