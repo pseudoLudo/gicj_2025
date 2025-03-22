@@ -2,7 +2,6 @@ extends Node2D
 
 const BASIC_ENEMY = preload("res://enemies/basic_enemy.tscn")
 const BULLET = preload("res://bullet/bullet.tscn")
-const FOLLOWER_ENEMY = preload("res://enemies/follower_enemy.tscn")
 var canShoot = true
 
 func _on_basic_enemy_timer_timeout() -> void:
@@ -26,9 +25,3 @@ func _physics_process(delta: float) -> void:
 
 func _on_bullet_timer_timeout() -> void:
 	canShoot = true
-
-func _on_follower_timer_timeout() -> void:
-	var fe = FOLLOWER_ENEMY.instantiate()
-	fe.position = Vector2(20,500)
-	fe.target = $pivot/player
-	add_child(fe)

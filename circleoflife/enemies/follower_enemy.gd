@@ -1,13 +1,12 @@
 extends Area2D
 
 var target 
-var target_pos 
+var target_dir
 
 func _ready() -> void:
-	pass
+	target = get_parent().get_node("pivot/player")
+	print(target)
 	
 func _physics_process(delta: float) -> void:
-	target_pos = (target.position - position)
-	
-	if position.distance_to(target_pos) > 3:
-		position += 100 * target_pos * delta
+	if position != target.position:
+		position += target.position - position * delta

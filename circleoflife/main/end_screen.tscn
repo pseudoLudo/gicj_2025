@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu1w150b6eoc2"]
+
+[ext_resource type="Script" path="res://main/end_screen.gd" id="1_fuwyh"]
+[ext_resource type="Texture2D" uid="uid://bk3d17n3jasyk" path="res://bg.png" id="1_kg1uc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q2mep"]
+font_size = 40
+
+[node name="endScreen" type="Node2D"]
+script = ExtResource("1_fuwyh")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(484.5, 337)
+scale = Vector2(1.74357, 1.32203)
+texture = ExtResource("1_kg1uc")
+metadata/_edit_lock_ = true
+
+[node name="TextLabel" type="Label" parent="."]
+offset_left = 66.0
+offset_top = 67.0
+offset_right = 793.0
+offset_bottom = 238.0
+text = "But I can't let go.
+ I've tried, but I can't.
+					
+"
+label_settings = SubResource("LabelSettings_q2mep")
+
+[node name="name" type="Label" parent="."]
+offset_left = 802.0
+offset_top = 545.0
+offset_right = 1529.0
+offset_bottom = 716.0
+text = "--Harvey Pekar
+
+					
+"
+label_settings = SubResource("LabelSettings_q2mep")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

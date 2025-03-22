@@ -43,12 +43,27 @@ autostart = true
 wait_time = 0.1
 one_shot = true
 
-[node name="followerTimer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
-autostart = true
+[node name="Label" type="Label" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 452.0
+offset_top = 248.0
+offset_right = 965.0
+offset_bottom = 375.0
+grow_vertical = 2
+text = "\"The theme is about
+staying alive,
+getting a job,
+finding a mate,
+having a place to live,
+finding a creative outlet.
+Life is a war of attrition. 
+You have to stay active on all fronts. 
+It's one thing after another.
+I've tried to control a chaotic universe. 
+And it's a losing battle.\"
+"
 
 [connection signal="area_entered" from="spikepivot/spike" to="spikepivot" method="_on_spike_area_entered"]
 [connection signal="timeout" from="basicEnemyTimer" to="." method="_on_basic_enemy_timer_timeout"]
 [connection signal="timeout" from="bulletTimer" to="." method="_on_bullet_timer_timeout"]
-[connection signal="timeout" from="followerTimer" to="." method="_on_follower_timer_timeout"]

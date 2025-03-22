@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5nkdnu3bop5u"]
+
+[ext_resource type="Script" path="res://main/main.gd" id="1_c51nd"]
+[ext_resource type="Texture2D" uid="uid://bk3d17n3jasyk" path="res://bg.png" id="1_jxas4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6cc5h"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_ehxmu"]
+font_size = 50
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_c51nd")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(603.5, 356.5)
+scale = Vector2(1.5818, 1.36017)
+texture = ExtResource("1_jxas4")
+metadata/_edit_lock_ = true
+
+[node name="title" type="Label" parent="."]
+offset_left = 39.0
+offset_top = 423.0
+offset_right = 528.0
+offset_bottom = 506.0
+text = "a war of attrition
+"
+label_settings = SubResource("LabelSettings_6cc5h")
+
+[node name="subtitle" type="Label" parent="."]
+offset_left = 38.0
+offset_top = 507.0
+offset_right = 527.0
+offset_bottom = 648.0
+text = "click to start
+
+"
+label_settings = SubResource("LabelSettings_ehxmu")
