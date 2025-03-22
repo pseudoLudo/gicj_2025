@@ -66,9 +66,9 @@ texture = ExtResource("2_1pmhw")
 
 [node name="title" type="Label" parent="."]
 offset_left = 39.0
-offset_top = 423.0
+offset_top = 411.96
 offset_right = 636.0
-offset_bottom = 506.0
+offset_bottom = 494.96
 text = "a war of attrition
 "
 label_settings = SubResource("LabelSettings_6cc5h")
