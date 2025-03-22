@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://bs0y46r0ox777"]
 
 [ext_resource type="Script" path="res://game/musicplayer.gd" id="1_1yh56"]
-[ext_resource type="AudioStream" uid="uid://cmjc5usmebqge" path="res://game/gic.wav" id="2_3o5av"]
+[ext_resource type="AudioStream" uid="uid://cf0hp0hotbhcc" path="res://gic.mp3" id="2_4ud10"]
 
 [node name="musicplayer" type="Node2D"]
 script = ExtResource("1_1yh56")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_3o5av")
+stream = ExtResource("2_4ud10")
 volume_db = -6.0
 autoplay = true

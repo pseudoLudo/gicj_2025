@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Musicplayer="*res://game/musicplayer.tscn"
 ScoreHolder="*res://game/score_holder.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gdfxr/plugin.cfg")

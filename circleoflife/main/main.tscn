@@ -17,6 +17,21 @@ font_size = 50
 _data = [Vector2(0, 0.723142), 0.0, 0.0, 0, 0, Vector2(1, 0.0402271), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Animation" id="Animation_alx5b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(39, 423)]
+}
+
 [sub_resource type="Animation" id="Animation_scub1"]
 resource_name = "textwiggle"
 length = 5.0
@@ -32,21 +47,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 0.420448, 0.267943),
 "update": 0,
 "values": [Vector2(39, 423), Vector2(39, 410), Vector2(39, 423)]
-}
-
-[sub_resource type="Animation" id="Animation_alx5b"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("title:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(39, 423)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ymh4n"]
@@ -66,9 +66,9 @@ texture = ExtResource("2_1pmhw")
 
 [node name="title" type="Label" parent="."]
 offset_left = 39.0
-offset_top = 411.96
+offset_top = 423.0
 offset_right = 636.0
-offset_bottom = 494.96
+offset_bottom = 506.0
 text = "a war of attrition
 "
 label_settings = SubResource("LabelSettings_6cc5h")
