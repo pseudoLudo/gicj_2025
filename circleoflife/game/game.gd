@@ -37,6 +37,7 @@ func _physics_process(delta: float) -> void:
 		$bulletTimer.start()
 
 func _process(delta: float) -> void:
+	$scoreLabel.text = str(ScoreHolder.score)
 	if playerHealth<= 0:
 		get_tree().change_scene_to_file("res://main/end_screen.tscn")
 		
