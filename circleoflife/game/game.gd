@@ -6,6 +6,7 @@ var canShoot = true
 @onready var label_2: RichTextLabel = $Label2
 var canShowText = false
 var playerHealth = 3
+@onready var shoot: AudioStreamPlayer2D = $shoot
 
 func _ready() -> void:
 	label_2.visible_ratio = 0
@@ -29,7 +30,9 @@ func _physics_process(delta: float) -> void:
 		var new_bullet = BULLET.instantiate()
 		new_bullet.position = $pivot/player.global_position
 		add_child(new_bullet)
+		shoot.play()
 		canShoot = false
+		
 		$bulletTimer.start()
 
 func _process(delta: float) -> void:

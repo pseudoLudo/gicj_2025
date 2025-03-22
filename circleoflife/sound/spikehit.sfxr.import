@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://cdsnqtdgc3mrc"
+path="res://.godot/imported/spikehit.sfxr-3fb5ce2cc5d153c920ef5eb3c7fd4977.sample"
+
+[deps]
+
+source_file="res://sound/spikehit.sfxr"
+dest_files=["res://.godot/imported/spikehit.sfxr-3fb5ce2cc5d153c920ef5eb3c7fd4977.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

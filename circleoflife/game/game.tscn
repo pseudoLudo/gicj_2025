@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://chqpowjcrasup"]
+[gd_scene load_steps=15 format=3 uid="uid://chqpowjcrasup"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_6vd4f"]
 [ext_resource type="Texture2D" uid="uid://bk3d17n3jasyk" path="res://bg.png" id="1_eyhv4"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://8pum6lgo0r7m" path="res://enemies/spike.tscn" id="6_l3361"]
 [ext_resource type="Script" path="res://enemies/spikepivot.gd" id="6_loadv"]
 [ext_resource type="FontFile" uid="uid://cpdeldrgbkwb5" path="res://JMH Typewriter.ttf" id="8_0h24y"]
+[ext_resource type="AudioStream" uid="uid://cdsnqtdgc3mrc" path="res://sound/spikehit.sfxr" id="8_wkyyy"]
+[ext_resource type="AudioStream" uid="uid://bqosq2iuh1xr3" path="res://sound/shoot.sfxr" id="9_1sbyo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_72fcs"]
 font = ExtResource("8_0h24y")
@@ -80,6 +82,9 @@ script = ExtResource("6_loadv")
 [node name="spike" parent="spikepivot" instance=ExtResource("6_l3361")]
 position = Vector2(260, 0)
 
+[node name="spikehit" type="AudioStreamPlayer2D" parent="spikepivot"]
+stream = ExtResource("8_wkyyy")
+
 [node name="basicEnemyTimer" type="Timer" parent="."]
 
 [node name="bulletTimer" type="Timer" parent="."]
@@ -135,6 +140,9 @@ autoplay = "instructions"
 wait_time = 4.0
 one_shot = true
 autostart = true
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_1sbyo")
 
 [connection signal="area_entered" from="spikepivot/spike" to="." method="_on_spike_area_entered"]
 [connection signal="area_entered" from="spikepivot/spike" to="spikepivot" method="_on_spike_area_entered"]

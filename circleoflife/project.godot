@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Musicplayer="*res://game/musicplayer.tscn"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdfxr/plugin.cfg")
+
 [input]
 
 left={
