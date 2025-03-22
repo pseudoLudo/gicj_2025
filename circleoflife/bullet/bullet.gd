@@ -1,6 +1,6 @@
 extends Area2D
 
-var speed = 600
+var speed = 1000
 var dir_angle = 0
 var mouseDirection
 var dir

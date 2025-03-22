@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://chqpowjcrasup"]
+[gd_scene load_steps=13 format=3 uid="uid://chqpowjcrasup"]
 
 [ext_resource type="Script" path="res://game/game.gd" id="1_6vd4f"]
 [ext_resource type="Texture2D" uid="uid://bk3d17n3jasyk" path="res://bg.png" id="1_eyhv4"]
@@ -7,11 +7,55 @@
 [ext_resource type="PackedScene" uid="uid://c0t7aq4qwubth" path="res://player/player.tscn" id="3_m21uj"]
 [ext_resource type="PackedScene" uid="uid://8pum6lgo0r7m" path="res://enemies/spike.tscn" id="6_l3361"]
 [ext_resource type="Script" path="res://enemies/spikepivot.gd" id="6_loadv"]
+[ext_resource type="FontFile" uid="uid://cpdeldrgbkwb5" path="res://JMH Typewriter.ttf" id="8_0h24y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_72fcs"]
+font = ExtResource("8_0h24y")
+font_size = 32
+font_color = Color(1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_8in35"]
+resource_name = "instructions"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("instructions:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uglbd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("instructions:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rcxut"]
+_data = {
+"RESET": SubResource("Animation_uglbd"),
+"instructions": SubResource("Animation_8in35")
+}
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_6vd4f")
 
 [node name="bg" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
 z_index = -1000
 position = Vector2(574.5, 325)
 scale = Vector2(1.13511, 1.03107)
@@ -37,20 +81,34 @@ script = ExtResource("6_loadv")
 position = Vector2(260, 0)
 
 [node name="basicEnemyTimer" type="Timer" parent="."]
-autostart = true
 
 [node name="bulletTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
 
-[node name="Label" type="Label" parent="."]
+[node name="instructions" type="Label" parent="."]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 452.0
-offset_top = 248.0
-offset_right = 965.0
-offset_bottom = 375.0
+offset_left = 455.0
+offset_top = 297.0
+offset_right = 927.0
+offset_bottom = 762.0
 grow_vertical = 2
+text = "click to shoot
+"
+label_settings = SubResource("LabelSettings_72fcs")
+autowrap_mode = 2
+
+[node name="Label2" type="RichTextLabel" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 425.0
+offset_top = 117.0
+offset_right = 779.0
+offset_bottom = 516.0
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("8_0h24y")
+theme_override_font_sizes/normal_font_size = 22
 text = "\"The theme is about
 staying alive,
 getting a job,
@@ -58,12 +116,28 @@ finding a mate,
 having a place to live,
 finding a creative outlet.
 Life is a war of attrition. 
-You have to stay active on all fronts. 
+You have to stay active 
+on all fronts. 
 It's one thing after another.
 I've tried to control a chaotic universe. 
 And it's a losing battle.\"
 "
+scroll_active = false
+autowrap_mode = 2
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rcxut")
+}
+autoplay = "instructions"
+
+[node name="visratio" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="spikepivot/spike" to="." method="_on_spike_area_entered"]
 [connection signal="area_entered" from="spikepivot/spike" to="spikepivot" method="_on_spike_area_entered"]
 [connection signal="timeout" from="basicEnemyTimer" to="." method="_on_basic_enemy_timer_timeout"]
 [connection signal="timeout" from="bulletTimer" to="." method="_on_bullet_timer_timeout"]
+[connection signal="timeout" from="visratio" to="." method="_on_visratio_timeout"]

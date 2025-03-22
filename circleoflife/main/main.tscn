@@ -1,27 +1,73 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5nkdnu3bop5u"]
+[gd_scene load_steps=11 format=3 uid="uid://b5nkdnu3bop5u"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_c51nd"]
-[ext_resource type="Texture2D" uid="uid://bk3d17n3jasyk" path="res://bg.png" id="1_jxas4"]
+[ext_resource type="Texture2D" uid="uid://lwxxei6f3ixg" path="res://peak.png" id="2_1pmhw"]
+[ext_resource type="FontFile" uid="uid://cpdeldrgbkwb5" path="res://JMH Typewriter.ttf" id="3_xaaxh"]
+[ext_resource type="Texture2D" uid="uid://cgp1wiwprfivw" path="res://snow.png" id="4_4iepc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6cc5h"]
+font = ExtResource("3_xaaxh")
 font_size = 60
 
 [sub_resource type="LabelSettings" id="LabelSettings_ehxmu"]
+font = ExtResource("3_xaaxh")
 font_size = 50
+
+[sub_resource type="Curve" id="Curve_6dn3x"]
+_data = [Vector2(0, 0.723142), 0.0, 0.0, 0, 0, Vector2(1, 0.0402271), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_scub1"]
+resource_name = "textwiggle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 0.420448, 0.267943),
+"update": 0,
+"values": [Vector2(39, 423), Vector2(39, 410), Vector2(39, 423)]
+}
+
+[sub_resource type="Animation" id="Animation_alx5b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(39, 423)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ymh4n"]
+_data = {
+"RESET": SubResource("Animation_alx5b"),
+"textwiggle": SubResource("Animation_scub1")
+}
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_c51nd")
 
 [node name="Bg" type="Sprite2D" parent="."]
-position = Vector2(603.5, 356.5)
-scale = Vector2(1.5818, 1.36017)
-texture = ExtResource("1_jxas4")
-metadata/_edit_lock_ = true
+modulate = Color(0, 0, 0, 1)
+position = Vector2(591.665, 291.243)
+scale = Vector2(4.66668, 2.08641)
+texture = ExtResource("2_1pmhw")
 
 [node name="title" type="Label" parent="."]
 offset_left = 39.0
 offset_top = 423.0
-offset_right = 528.0
+offset_right = 636.0
 offset_bottom = 506.0
 text = "a war of attrition
 "
@@ -36,3 +82,26 @@ text = "click to start
 
 "
 label_settings = SubResource("LabelSettings_ehxmu")
+
+[node name="snow" type="CPUParticles2D" parent="."]
+position = Vector2(752, -51)
+amount = 15
+lifetime = 2.0
+preprocess = 2.0
+speed_scale = 2.0
+randomness = 0.5
+texture = ExtResource("4_4iepc")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1)
+gravity = Vector2(-500, 980)
+damping_min = 6.756
+damping_max = 12.162
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_6dn3x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ymh4n")
+}
+autoplay = "textwiggle"

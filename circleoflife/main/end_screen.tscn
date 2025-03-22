@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu1w150b6eoc2"]
+[gd_scene load_steps=6 format=3 uid="uid://bu1w150b6eoc2"]
 
 [ext_resource type="Script" path="res://main/end_screen.gd" id="1_fuwyh"]
 [ext_resource type="Texture2D" uid="uid://bk3d17n3jasyk" path="res://bg.png" id="1_kg1uc"]
+[ext_resource type="FontFile" uid="uid://cpdeldrgbkwb5" path="res://JMH Typewriter.ttf" id="3_jjmva"]
+[ext_resource type="Texture2D" uid="uid://c5okbypu5xwvy" path="res://snow3.png" id="4_807yc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q2mep"]
+font = ExtResource("3_jjmva")
 font_size = 40
 
 [node name="endScreen" type="Node2D"]
 script = ExtResource("1_fuwyh")
 
 [node name="Bg" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(484.5, 337)
 scale = Vector2(1.74357, 1.32203)
 texture = ExtResource("1_kg1uc")
@@ -41,5 +45,17 @@ label_settings = SubResource("LabelSettings_q2mep")
 wait_time = 5.0
 one_shot = true
 autostart = true
+
+[node name="Snow" type="Sprite2D" parent="."]
+modulate = Color(0.690196, 0.243137, 0, 0.407843)
+position = Vector2(299, 189)
+scale = Vector2(2.20442, 2.09627)
+texture = ExtResource("4_807yc")
+
+[node name="Snow2" type="Sprite2D" parent="."]
+modulate = Color(0.690196, 0.243137, 0, 0.556863)
+position = Vector2(903, 449)
+scale = Vector2(2.28571, 2.17357)
+texture = ExtResource("4_807yc")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
