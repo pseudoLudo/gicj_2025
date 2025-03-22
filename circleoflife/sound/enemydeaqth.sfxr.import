@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://d0xb4bxsy3821"
+path="res://.godot/imported/enemydeaqth.sfxr-419fda2a831518b06f20a7485c2bc6e7.sample"
+
+[deps]
+
+source_file="res://sound/enemydeaqth.sfxr"
+dest_files=["res://.godot/imported/enemydeaqth.sfxr-419fda2a831518b06f20a7485c2bc6e7.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

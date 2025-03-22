@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bykid6orlwq0t"]
+[gd_scene load_steps=7 format=3 uid="uid://bykid6orlwq0t"]
 
 [ext_resource type="Texture2D" uid="uid://dvcyt78iddpkw" path="res://basicenem.png" id="1_oc4jp"]
 [ext_resource type="Script" path="res://enemies/basic_enemy.gd" id="1_p8owp"]
+[ext_resource type="AudioStream" uid="uid://dtdmod4peng4a" path="res://sound/enemyHit.sfxr" id="3_p3vjo"]
+[ext_resource type="AudioStream" uid="uid://d0xb4bxsy3821" path="res://sound/enemydeaqth.sfxr" id="4_ona7g"]
+[ext_resource type="PackedScene" uid="uid://b66vu3q3qewbj" path="res://enemies/explosion.tscn" id="5_2cdqe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wd634"]
 radius = 44.9222
@@ -18,5 +21,17 @@ shape = SubResource("CircleShape2D_wd634")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_p3vjo")
+
+[node name="death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ona7g")
+
+[node name="explosion" parent="." instance=ExtResource("5_2cdqe")]
+emitting = false
+one_shot = true
+color = Color(0, 0.666667, 0.533333, 1)
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="finished" from="explosion" to="." method="_on_explosion_finished"]

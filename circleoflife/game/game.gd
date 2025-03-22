@@ -7,6 +7,7 @@ var canShoot = true
 var canShowText = false
 var playerHealth = 3
 @onready var shoot: AudioStreamPlayer2D = $shoot
+signal playerhit
 
 func _ready() -> void:
 	label_2.visible_ratio = 0
@@ -50,3 +51,5 @@ func _on_visratio_timeout() -> void:
 func _on_spike_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		playerHealth -= 1
+		playerhit.emit()
+		
